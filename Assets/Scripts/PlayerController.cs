@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("Speed")]
     public float topSpeed = 20.0f;
     public float currentSpeed = 0f;
+    private float forceMultiplier = 10f;
 
     [Header("Acceleration")]
     public float boostAcceleration = 1f;
@@ -16,6 +18,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Turn")]
     public float turnSpeed = 100.0f;
+    public float groundDrag = 10f;
+    public float airDrag = 10f;
+
+    [Header("Flight")]
+    public float floatiness = 0f; // 0 = affected by gravity
 
     // Components
     private Rigidbody rb;
@@ -60,19 +67,29 @@ public class PlayerController : MonoBehaviour
 
         MachineMovement();
         MachineTurning();
-
-        Debug.Log(IsGrounded());
     }
 
     private void MachineMovement()
     {
-        // Move the vehicle automatically. Air Ride machines do not stop. 
-        Vector3 movement = transform.forward * currentSpeed;
-        rb.linearVelocity = new Vector3(
-                movement.x,
-                rb.linearVelocity.y,
-                movement.z
-            );
+        // Move the vehicle automatically. Air Ride machines do not stop.
+
+        if (IsGrounded()) // Ground control
+        {
+            Vector3 groundMovement = transform.forward * currentSpeed;
+            rb.AddForce(groundMovement * forceMultiplier, ForceMode.Acceleration);
+            rb.AddForce(-rb.linearVelocity * groundDrag); // Drag force
+        }
+        else // Flight control
+        {
+            Vector3 airMovement = transform.forward * currentSpeed;
+            rb.AddForce(airMovement * forceMultiplier, ForceMode.Acceleration);
+            rb.AddForce(new Vector3(
+                -rb.linearVelocity.x * airDrag,
+                -rb.linearVelocity.y * floatiness,
+                -rb.linearVelocity.z * airDrag));
+        }
+
+        Debug.Log(Vector3.Magnitude(rb.linearVelocity));
     }
 
     private void MachineTurning()
@@ -98,6 +115,14 @@ public class PlayerController : MonoBehaviour
             {
                 blink.Blink();
             }
+        }
+        else
+        {
+            // Plummet downwards
+            currentSpeed = 0f;
+            float plummetSpeed = 50f; 
+            Vector3 plummet = transform.up * -plummetSpeed;
+            rb.linearVelocity = plummet;
         }
     }
 
