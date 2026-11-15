@@ -8,6 +8,7 @@ public class MachineMovement : MonoBehaviour
 {
     private MachineController controller;
     private Rigidbody rb;
+    private BaseStats stats;
 
     [Header("Speed")]
     private float forceMultiplier = 10f;
@@ -17,6 +18,7 @@ public class MachineMovement : MonoBehaviour
     {
         controller = GetComponent<MachineController>();
         rb = controller.Rigidbody;
+        stats = controller.BaseStats;
 
     }
 
@@ -47,7 +49,7 @@ public class MachineMovement : MonoBehaviour
         Speed speed = controller.Speed;
         Vector3 groundMovement = transform.forward * speed.CurrentSpeed;
         rb.AddForce(groundMovement * forceMultiplier, ForceMode.Acceleration);
-        rb.AddForce(-rb.linearVelocity * controller.groundDrag); // Drag force
+        rb.AddForce(-rb.linearVelocity * stats.groundDrag); // Drag force
     }
 
     public void FlightMovement()
@@ -58,9 +60,9 @@ public class MachineMovement : MonoBehaviour
         rb.AddForce(airMovement * forceMultiplier, ForceMode.Acceleration);
         // Drag force
         rb.AddForce(new Vector3(
-            -rb.linearVelocity.x * controller.airDrag,
-            -rb.linearVelocity.y * controller.floatiness,
-            -rb.linearVelocity.z * controller.airDrag));
+            -rb.linearVelocity.x * stats.airDrag,
+            -rb.linearVelocity.y * stats.floatiness,
+            -rb.linearVelocity.z * stats.airDrag));
     }
 
     public void DisplaySpeedometer()

@@ -4,15 +4,18 @@ using UnityEngine;
 public class MachineBoost : MonoBehaviour
 {
     private MachineController controller;
+    private BaseStats stats;
     private bool charging;
-    public float boostForce = 30f;
+
+    //public float boostForce = 30f;
     public float chargeMeter = 0.0f;
-    public float chargeRate = 1f;
+    //public float chargeRate = 1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controller = GetComponent<MachineController>();
+        stats = controller.BaseStats;
     }
 
     // Update is called once per frame
@@ -22,7 +25,7 @@ public class MachineBoost : MonoBehaviour
         {
             charging = true;
             if (chargeMeter <= 1f)
-                chargeMeter += chargeRate * Time.deltaTime;
+                chargeMeter += stats.chargeRate * Time.deltaTime;
         }
         else
         {
@@ -36,7 +39,7 @@ public class MachineBoost : MonoBehaviour
         if (chargeMeter > 0.4)
         {
             Vector3 direction = transform.forward;
-            controller.Speed.CurrentSpeed += (boostForce * chargeMeter);
+            controller.Speed.CurrentSpeed += (stats.boostForce * chargeMeter);
         }
         charging = false;
         chargeMeter = 0.0f;

@@ -7,14 +7,13 @@ public class MachineBrake : MonoBehaviour
 {
     private MachineController controller;
     private MachineMovement movement;
-
-    public float brakeDecayRate = 1f;
-    public float brakeTurnDecayRate = 0.5f;
+    private BaseStats stats; 
 
     void Start()
     {
         controller = GetComponent<MachineController>();
         movement = GetComponent<MachineMovement>();
+        stats = controller.BaseStats;
     }
 
     // Update is called once per frame
@@ -24,14 +23,10 @@ public class MachineBrake : MonoBehaviour
         if (controller.GetBrakeValue())
         {
             if (controller.GetInputValue().x != 0)
-                controller.Speed.Deceleration = brakeTurnDecayRate;
+                controller.Speed.Deceleration = stats.turnBrakeRate;
             else
-                controller.Speed.Deceleration = brakeDecayRate;
+                controller.Speed.Deceleration = stats.brakeRate;
             Brake();
-        }
-        else
-        {
-            controller.Speed.Deceleration = controller.brakeRate;
         }
     }
 

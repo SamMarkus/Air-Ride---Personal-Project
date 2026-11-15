@@ -132,10 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0832840e3eed243a8d671fef88224d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewPlayerController
-  topSpeed: 40
+  topSpeed: 30
   boostAcceleration: 1
-  brakeRate: 0.1
-  turnSpeed: 100
+  brakeRate: 0.2
+  turnSpeed: 50
   groundDrag: 10
   airDrag: 10
   floatiness: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed398e6e1515b479a370f5beaac97f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MachineTurning
-  brakeTurnMultiplier: 1.5
+  brakeTurnMultiplier: 2
 --- !u!114 &6682743031215034032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f52b08c42faf5445b62ad8001c47547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MachineBoost
-  boostForce: 40
+  boostForce: 20
   chargeMeter: 0
   chargeRate: 0.5
 --- !u!114 &464352474460493805

@@ -9,7 +9,15 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class MachineController : MonoBehaviour
 {
+    [Header("Stats")]
+    [SerializeField] 
+    private BaseStats baseStats;
+    public BaseStats BaseStats { get { return baseStats; } }
+    private Speed speed;
+    public Speed Speed { get { return speed; } }
+
     // Data Values 
+    /*
     [Header("Speed")]
     private Speed speed;
     public Speed Speed { get { return speed; } }
@@ -28,6 +36,7 @@ public class MachineController : MonoBehaviour
 
     [Header("Flight")]
     public float floatiness = 0f; // 0 = affected by gravity
+    */
 
     [Header("Gravity")]
     public Transform groundCheck;
@@ -48,9 +57,6 @@ public class MachineController : MonoBehaviour
         get { return _rb; }
     }
 
-    [Header("State Machine")]
-    private StateMachine stateMachine; 
-
     private void OnEnable()
     {
         MoveAction.Enable();
@@ -69,49 +75,19 @@ public class MachineController : MonoBehaviour
 
     private void Start()
     {
-        speed = new Speed(topSpeed, boostAcceleration, brakeRate);
-
-        /*
-        // State Machine
-        stateMachine = new StateMachine();
-
-        var groundState = new MachineGroundedState(this);
-        var flightState = new MachineFlightState(this);
-        var brakeState = new MachineBrakeState(this);
-
-        // Transitions
-        At(groundState, flightState, new FuncPredicate(() => !IsGrounded()));
-        At(flightState, groundState, new FuncPredicate(() => IsGrounded()));
-        At(groundState, brakeState, new FuncPredicate(() => GetBrakeValue()));
-        At(brakeState, groundState, new FuncPredicate(() => !GetBrakeValue()));
-
-
-        stateMachine.SetState(groundState);
-        */
+        speed = new Speed(BaseStats.topSpeed, 
+            BaseStats.boostAcceleration, 
+            BaseStats.brakeRate);
     }
     private void Update()
     {
         moveValue = MoveAction.ReadValue<Vector2>();
         brakeValue = BrakeAction.IsPressed();
-
-        //stateMachine.Update();
-
-    }
-
-    private void FixedUpdate()
-    {
-        //stateMachine.FixedUpdate();
     }
 
     // Get Input values
     public Vector2 GetInputValue() { return moveValue; }
     public bool GetBrakeValue() { return brakeValue; }
-
-    // State Machine helper
-    void At(IState from, IState to, IPredicate condition)
-        => stateMachine.AddTransition(from, to, condition);
-    void Any(IState to, IPredicate condition) => 
-        stateMachine.AddAnyTransition(to, condition);
 
     // Gravity
     public bool IsGrounded()
