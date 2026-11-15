@@ -12,6 +12,7 @@ public class BaseStats : ScriptableObject
     [Header("Brake")]
     public float brakeRate = 0.5f;
     public float turnBrakeRate = 0.2f;
+    public bool updateForceWhenBraking = true;
 
     [Header("Turn")]
     public float turnSpeed = 50f;

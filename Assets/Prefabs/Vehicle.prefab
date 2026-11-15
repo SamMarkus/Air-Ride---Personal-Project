@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2554245061932243657}
   - component: {fileID: 2129364446787901559}
   - component: {fileID: 1145241841021859397}
+  - component: {fileID: 6411706192900387279}
   - component: {fileID: 707201610552749427}
   - component: {fileID: 567823009734687011}
   - component: {fileID: 6682743031215034032}
@@ -132,13 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0832840e3eed243a8d671fef88224d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewPlayerController
-  topSpeed: 30
-  boostAcceleration: 1
-  brakeRate: 0.2
-  turnSpeed: 50
-  groundDrag: 10
-  airDrag: 10
-  floatiness: 0
+  baseStats: {fileID: 11400000, guid: 5a1108938a4666549a4f768aacf839bc, type: 2}
+  logSpeedometer: 1
   groundCheck: {fileID: 3531978619796247212}
   groundDistance: 0.4
   groundMask:
@@ -212,7 +208,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
     m_Priority: 0
---- !u!114 &707201610552749427
+--- !u!114 &6411706192900387279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,6 +216,19 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317002339119774308}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e2701cd0b30c64ead6f6c138a11e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MachineStateManager
+  controller: {fileID: 1145241841021859397}
+--- !u!114 &707201610552749427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317002339119774308}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0213d3db673c664cacf92dfe9dcf697, type: 3}
   m_Name: 
@@ -236,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed398e6e1515b479a370f5beaac97f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MachineTurning
-  brakeTurnMultiplier: 2
 --- !u!114 &6682743031215034032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,13 +252,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317002339119774308}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b75abbda04b9a5148acb3587acdf5ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MachineTurning
-  brakeDecayRate: 0.5
-  brakeTurnDecayRate: 0.2
 --- !u!114 &6459874207705936171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,14 +264,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317002339119774308}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f52b08c42faf5445b62ad8001c47547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MachineBoost
-  boostForce: 20
   chargeMeter: 0
-  chargeRate: 0.5
 --- !u!114 &464352474460493805
 MonoBehaviour:
   m_ObjectHideFlags: 0

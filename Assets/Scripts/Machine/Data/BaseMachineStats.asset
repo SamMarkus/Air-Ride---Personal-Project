@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseStats
   topSpeed: 30
   boostAcceleration: 1
-  brakeRate: 0.5
+  brakeRate: 1
   turnBrakeRate: 0.2
+  updateForceWhenBraking: 1
   turnSpeed: 50
   brakeTurnMultiplier: 2
   boostForce: 20

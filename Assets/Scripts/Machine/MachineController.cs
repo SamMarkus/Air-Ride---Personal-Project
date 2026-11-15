@@ -16,27 +16,7 @@ public class MachineController : MonoBehaviour
     private Speed speed;
     public Speed Speed { get { return speed; } }
 
-    // Data Values 
-    /*
-    [Header("Speed")]
-    private Speed speed;
-    public Speed Speed { get { return speed; } }
-    public float topSpeed = 20.0f;
-
-    [Header("Acceleration")]
-    public float boostAcceleration = 1f;
-    public float brakeRate = 1f;
-
-    [Header("Turn")]
-    public float turnSpeed = 100.0f;
-
-    [Header("Drag")]
-    public float groundDrag = 10f;
-    public float airDrag = 10f;
-
-    [Header("Flight")]
-    public float floatiness = 0f; // 0 = affected by gravity
-    */
+    public bool logSpeedometer;
 
     [Header("Gravity")]
     public Transform groundCheck;
@@ -68,21 +48,23 @@ public class MachineController : MonoBehaviour
         BrakeAction.Disable(); 
     }
 
+    // Awake is called so necessary objects are referenced or made
+    // before anything else
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-    }
 
-    private void Start()
-    {
-        speed = new Speed(BaseStats.topSpeed, 
-            BaseStats.boostAcceleration, 
+        speed = new Speed(BaseStats.topSpeed,
+            BaseStats.boostAcceleration,
             BaseStats.brakeRate);
     }
     private void Update()
     {
         moveValue = MoveAction.ReadValue<Vector2>();
         brakeValue = BrakeAction.IsPressed();
+
+        if (logSpeedometer)
+            DisplaySpeedometer();
     }
 
     // Get Input values
