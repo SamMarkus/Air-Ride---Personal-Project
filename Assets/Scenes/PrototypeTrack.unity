@@ -1120,6 +1120,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7658285919906093950, guid: 995eec71e1a9394438692b4945cc6919, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658285919906093950, guid: 995eec71e1a9394438692b4945cc6919, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658285919906093950, guid: 995eec71e1a9394438692b4945cc6919, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1918888390}
+    - target: {fileID: 7658285919906093950, guid: 995eec71e1a9394438692b4945cc6919, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658285919906093950, guid: 995eec71e1a9394438692b4945cc6919, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MachineController, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1128,6 +1148,11 @@ PrefabInstance:
 --- !u!4 &1918888389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4990332119917297149, guid: 995eec71e1a9394438692b4945cc6919, type: 3}
+  m_PrefabInstance: {fileID: 1918888388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1918888390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1317002339119774308, guid: 995eec71e1a9394438692b4945cc6919, type: 3}
   m_PrefabInstance: {fileID: 1918888388}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

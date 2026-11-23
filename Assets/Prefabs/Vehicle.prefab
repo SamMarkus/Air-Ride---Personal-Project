@@ -43,11 +43,9 @@ GameObject:
   - component: {fileID: 2554245061932243657}
   - component: {fileID: 2129364446787901559}
   - component: {fileID: 1145241841021859397}
+  - component: {fileID: 7658285919906093950}
   - component: {fileID: 6411706192900387279}
-  - component: {fileID: 707201610552749427}
   - component: {fileID: 567823009734687011}
-  - component: {fileID: 6682743031215034032}
-  - component: {fileID: 6459874207705936171}
   - component: {fileID: 464352474460493805}
   m_Layer: 0
   m_Name: Vehicle
@@ -134,80 +132,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewPlayerController
   baseStats: {fileID: 11400000, guid: 5a1108938a4666549a4f768aacf839bc, type: 2}
-  logSpeedometer: 1
+  logSpeedometer: 0
   groundCheck: {fileID: 3531978619796247212}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 128
-  MoveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 582a5a09-e14a-4636-882e-28592a4095de
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: WASD
-      m_Id: 0dadaf26-b031-43ea-83ef-0945d47050a3
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 4
-    - m_Name: up
-      m_Id: be4e7f25-928b-4efe-9466-ea0e79798cbd
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: down
-      m_Id: ada341d2-5a8a-4611-a6b2-f8c2a0d05d7b
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: left
-      m_Id: b0f1fc30-ec85-4ec3-ac6f-1db629ee8664
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: right
-      m_Id: ef3810bf-180a-4570-a4f9-482898da2a40
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    m_Flags: 0
-    m_Priority: 0
-  BrakeAction:
-    m_Name: Brake
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 06286582-02d7-4493-a6dc-8cfeca1c9102
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: d0a74fca-6c44-474f-ac6c-903eec529f77
-      m_Path: <Keyboard>/space
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Brake
-      m_Flags: 0
-    m_Flags: 0
-    m_Priority: 0
+  input: {fileID: 7658285919906093950}
+--- !u!114 &7658285919906093950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317002339119774308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 2f37fb8d93c47ec48ba27230abfd201c, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1145241841021859397}
+        m_TargetAssemblyTypeName: MachineController, Assembly-CSharp
+        m_MethodName: HandleMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 51d4d371-7ad5-495a-8b28-a399ca7a6ede
+    m_ActionName: 'Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1145241841021859397}
+        m_TargetAssemblyTypeName: MachineController, Assembly-CSharp
+        m_MethodName: HandleBrake
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2adb3709-a85b-4be1-93c7-e810aa1641ec
+    m_ActionName: 'Player/Brake[/Keyboard/space,/XInputControllerWindows/buttonEast,/XInputControllerWindows/rightTrigger]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &6411706192900387279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,18 +214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MachineStateManager
   controller: {fileID: 1145241841021859397}
---- !u!114 &707201610552749427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317002339119774308}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0213d3db673c664cacf92dfe9dcf697, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MachineMovement
 --- !u!114 &567823009734687011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,31 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed398e6e1515b479a370f5beaac97f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MachineTurning
---- !u!114 &6682743031215034032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317002339119774308}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75abbda04b9a5148acb3587acdf5ded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MachineTurning
---- !u!114 &6459874207705936171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317002339119774308}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f52b08c42faf5445b62ad8001c47547, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MachineBoost
-  chargeMeter: 0
+  playerModel: {fileID: 7759550513246277155}
+  controller: {fileID: 1145241841021859397}
+  tiltSpeed: 0.5
+  maxTilt: 20
+  tiltDeadzone: 0.5
 --- !u!114 &464352474460493805
 MonoBehaviour:
   m_ObjectHideFlags: 0

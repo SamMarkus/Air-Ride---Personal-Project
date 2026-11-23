@@ -24,3 +24,5 @@ MonoBehaviour:
   groundDrag: 10
   airDrag: 10
   floatiness: 3
+  jumpForce: 20
+  flightPower: 100

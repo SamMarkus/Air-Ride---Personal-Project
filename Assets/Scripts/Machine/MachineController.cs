@@ -25,8 +25,7 @@ public class MachineController : MonoBehaviour
 
     // Input system (x=left/right turn, y=up/down tilt) 
     [Header("Input")]
-    public InputAction MoveAction;
-    public InputAction BrakeAction;
+    public PlayerInput input;
     private Vector2 moveValue;
     private bool brakeValue;
 
@@ -35,17 +34,6 @@ public class MachineController : MonoBehaviour
     public Rigidbody Rigidbody
     {
         get { return _rb; }
-    }
-
-    private void OnEnable()
-    {
-        MoveAction.Enable();
-        BrakeAction.Enable(); 
-    }
-    private void OnDisable()
-    {
-        MoveAction.Disable();
-        BrakeAction.Disable(); 
     }
 
     // Awake is called so necessary objects are referenced or made
@@ -60,9 +48,6 @@ public class MachineController : MonoBehaviour
     }
     private void Update()
     {
-        moveValue = MoveAction.ReadValue<Vector2>();
-        brakeValue = BrakeAction.IsPressed();
-
         if (logSpeedometer)
             DisplaySpeedometer();
     }
@@ -83,5 +68,15 @@ public class MachineController : MonoBehaviour
     {
         int speedometer = (int)Vector3.Magnitude(Rigidbody.linearVelocity);
         Debug.Log(speedometer);
+    }
+
+    public void HandleMovement(InputAction.CallbackContext context)
+    {
+        moveValue = context.ReadValue<Vector2>();
+    }
+
+    public void HandleBrake(InputAction.CallbackContext context)
+    {
+        brakeValue = context.performed;
     }
 }

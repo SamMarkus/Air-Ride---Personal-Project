@@ -1,0 +1,17 @@
+RECOMMENDED USE OF BASESTATE AND STATEMANAGER
+
+- StateManager
+    - Create a concrete version of the state manager based on what object you
+      want it attached to. (Player, enemy, UI, etc.)
+    - Create an enum with the states that object will have. 
+      (idle, walk, attack, etc.)
+    - In the Start() or Awake() method, add your states to the dictionary
+      using 'States.Add(<state enum>, new <state class>);'
+    - Make sure to set CurrentState to a state from the dictionary.
+
+- BaseState
+    - Create a concrete child class of BaseState that represents what all
+      states for your object will have (PlayerBaseState, EnemyBaseState)
+    - In the object base state, you can override GetNextState() to include
+      "Any" state transitions and create a virtual or abstract class for "To"
+      state transitions. 

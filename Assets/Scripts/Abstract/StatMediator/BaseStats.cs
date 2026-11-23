@@ -28,4 +28,6 @@ public class BaseStats : ScriptableObject
 
     [Header("Flight")]
     public float floatiness = 0f;
+    public float jumpForce = 20f;
+    public float flightPower = 100f;
 }
